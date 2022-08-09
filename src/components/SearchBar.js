@@ -1,6 +1,6 @@
-function SearchBar() {
+export default function SearchBar() {
   return (
-    <form class="d-flex" role="search">
+    <form class="d-flex m-3" role="search">
       <div class="input-group mb-3">
         <i class="bi bi-search input-group-text border border-end-0 bg-white"></i>
         <input
@@ -14,5 +14,3 @@ function SearchBar() {
     </form>
   );
 }
-
-export default SearchBar;
