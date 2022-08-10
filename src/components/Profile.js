@@ -1,4 +1,4 @@
-export default function Profile() {
+export default function Profile(props) {
   return (
     <div id="profile-card" className="card m-3">
       <div className="card-body">
@@ -7,7 +7,7 @@ export default function Profile() {
           className="card-img-top mb-3"
           alt=""
         />
-        <h5 className="card-title">John Doe</h5>
+        <h5 className="card-title">{props.userhandle}</h5>
         <p className="card-text">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda
           veniam reprehenderit fuga pariatur quaerat enim modi corrupti

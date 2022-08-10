@@ -6,9 +6,11 @@ import React from "react";
 
 function App() {
   const [username, setUsername] = React.useState("");
-  const [users, setUsers] = React.useState([]);
+  const [users, setUsers] = React.useState(["John", "Jane", "Bob", "Joe"]);
   const [sort, setSort] = React.useState("");
   const [filter, setFilter] = React.useState("");
+
+  const userList = users.map((user) => <Profile userhandle={user}></Profile>);
 
   const handleChange = (e) => {
     setUsername(e.target.value);
@@ -38,14 +40,7 @@ function App() {
         </div>
       </header>
       <div className="d-flex flex-row justify-content-start flex-wrap">
-        <Profile></Profile>
-        <Profile></Profile>
-        <Profile></Profile>
-        <Profile></Profile>
-        <Profile></Profile>
-        <Profile></Profile>
-        <Profile></Profile>
-        <Profile></Profile>
+        {userList}
       </div>
     </div>
   );
