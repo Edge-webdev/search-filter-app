@@ -2,19 +2,34 @@ import "./App.css";
 import SearchBar from "./components/SearchBar";
 import Profile from "./components/Profile";
 import Dropdown from "./components/Dropdown";
-import React from "react";
+import React, { useEffect } from "react";
 
 function App() {
   const [username, setUsername] = React.useState("");
-  const [users, setUsers] = React.useState(["John", "Jane", "Bob", "Joe"]);
+  const [users, setUsers] = React.useState([]);
   const [sort, setSort] = React.useState("");
   const [filter, setFilter] = React.useState("");
 
-  const userList = users.map((user) => <Profile userhandle={user}></Profile>);
+  const userList = users?.map((user) => (
+    <Profile
+      profileImage={user.picture.large}
+      userHandle={user.name.first}
+      lastName={user.name.last}
+    ></Profile>
+  ));
 
   const handleChange = (e) => {
     setUsername(e.target.value);
   };
+
+  useEffect(() => {
+    async function fetchUsers() {
+      const response = await fetch("https://randomuser.me/api/?results=50");
+      const json = await response.json();
+      setUsers(json.results);
+    }
+    fetchUsers();
+  }, []);
 
   return (
     <div className="App">
