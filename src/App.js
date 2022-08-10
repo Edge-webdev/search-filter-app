@@ -2,8 +2,14 @@ import "./App.css";
 import SearchBar from "./components/SearchBar";
 import Profile from "./components/Profile";
 import Dropdown from "./components/Dropdown";
+import React from "react";
 
 function App() {
+  const [username, setUsername] = React.useState("");
+  const [users, setUsers] = React.useState([]);
+  const [sort, setSort] = React.useState("");
+  const [filter, setFilter] = React.useState("");
+
   return (
     <div className="App">
       <header>
@@ -26,17 +32,17 @@ function App() {
             buttonName={["Online", "Offline"]}
           ></Dropdown>
         </div>
-        <div className="d-flex flex-row justify-content-start flex-wrap">
-          <Profile></Profile>
-          <Profile></Profile>
-          <Profile></Profile>
-          <Profile></Profile>
-          <Profile></Profile>
-          <Profile></Profile>
-          <Profile></Profile>
-          <Profile></Profile>
-        </div>
       </header>
+      <div className="d-flex flex-row justify-content-start flex-wrap">
+        <Profile></Profile>
+        <Profile></Profile>
+        <Profile></Profile>
+        <Profile></Profile>
+        <Profile></Profile>
+        <Profile></Profile>
+        <Profile></Profile>
+        <Profile></Profile>
+      </div>
     </div>
   );
 }
