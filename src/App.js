@@ -10,10 +10,14 @@ function App() {
   const [sort, setSort] = React.useState("");
   const [filter, setFilter] = React.useState("");
 
+  const handleChange = (e) => {
+    setUsername(e.target.value);
+  };
+
   return (
     <div className="App">
       <header>
-        <SearchBar></SearchBar>
+        <SearchBar username={username} handleChange={handleChange}></SearchBar>
         <div
           id="dropdown-container"
           className="d-flex flex-row justify-content-start"

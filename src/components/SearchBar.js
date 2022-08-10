@@ -6,6 +6,8 @@ export default function SearchBar(props) {
         <input
           type="text"
           className="form-control border border-start-0"
+          value={props.username}
+          onChange={props.handleChange}
           placeholder="Username"
           aria-label="Username"
           aria-describedby="basic-addon1"
