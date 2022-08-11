@@ -10,13 +10,23 @@ function App() {
   const [sort, setSort] = React.useState("");
   const [filter, setFilter] = React.useState("");
 
-  const userList = users?.map((user) => (
-    <Profile
-      profileImage={user.picture.large}
-      userHandle={user.name.first}
-      lastName={user.name.last}
-    ></Profile>
-  ));
+  const userList = users
+    // eslint-disable-next-line array-callback-return
+    ?.filter((item) => {
+      if (
+        item.name.first.toLowerCase().includes(username.toLowerCase()) ||
+        item.name.last.toLowerCase().includes(username.toLowerCase())
+      ) {
+        return item;
+      }
+    })
+    .map((user) => (
+      <Profile
+        profileImage={user.picture.large}
+        userHandle={user.name.first}
+        lastName={user.name.last}
+      ></Profile>
+    ));
 
   const handleChange = (e) => {
     setUsername(e.target.value);
@@ -24,7 +34,7 @@ function App() {
 
   useEffect(() => {
     async function fetchUsers() {
-      const response = await fetch("https://randomuser.me/api/?results=50");
+      const response = await fetch("https://randomuser.me/api/?results=100");
       const json = await response.json();
       setUsers(json.results);
     }
