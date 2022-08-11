@@ -32,6 +32,14 @@ function App() {
     setUsername(e.target.value);
   };
 
+  const handleSortChange = (e) => {
+    setSort(e.target.value);
+  };
+
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  };
+
   useEffect(() => {
     async function fetchUsers() {
       const response = await fetch("https://randomuser.me/api/?results=100");
@@ -57,10 +65,12 @@ function App() {
               "Z to A (First Name)",
               "Z to A (Last Name)",
             ]}
+            handleChange={handleSortChange}
           ></Dropdown>
           <Dropdown
             title="Filter"
             buttonName={["Online", "Offline"]}
+            handleChange={handleFilterChange}
           ></Dropdown>
         </div>
       </header>
