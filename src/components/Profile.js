@@ -1,7 +1,7 @@
 export default function Profile(props) {
   const status = Math.random() > 0.5;
   return (
-    <div id="profile-card" className="card m-3">
+    <li id="profile-card" className="card m-3">
       <div className="card-body">
         <img src={props.profileImage} className="card-img-top mb-3" alt="" />
         <h5 className="card-title">
@@ -12,8 +12,8 @@ export default function Profile(props) {
           veniam reprehenderit fuga pariatur quaerat enim modi corrupti
           accusamus accusantium expedita?
         </p>
-        {/* eslint-disable-next-line */}
         <footer className="d-flex flex-row align-items-center">
+          {/* eslint-disable-next-line */}
           <a href="#" className="btn btn-primary">
             Profile
           </a>
@@ -26,6 +26,6 @@ export default function Profile(props) {
           </p>
         </footer>
       </div>
-    </div>
+    </li>
   );
 }
