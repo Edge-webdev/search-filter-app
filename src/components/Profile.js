@@ -1,5 +1,5 @@
 export default function Profile(props) {
-  const status = Math.random() > 0.5;
+  const status = props.age % 2 === 0;
   return (
     <li id="profile-card" className="card m-3">
       <div className="card-body">

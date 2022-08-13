@@ -7,6 +7,7 @@ import React, { useEffect } from "react";
 function App() {
   const [username, setUsername] = React.useState("");
   const [users, setUsers] = React.useState([]);
+  const [backupUsers, setBackupUsers] = React.useState([]);
   const [sort, setSort] = React.useState("");
   const [filter, setFilter] = React.useState("");
 
@@ -26,6 +27,7 @@ function App() {
         profileImage={user.picture.large}
         userHandle={user.name.first}
         lastName={user.name.last}
+        age={user.dob.age}
       ></Profile>
     ));
 
@@ -70,6 +72,15 @@ function App() {
   };
 
   const handleFilterChange = (e) => {
+    const backup = [...backupUsers];
+    setUsers(backup);
+    if (e.target.value === "All") {
+      setUsers(backupUsers);
+    } else if (e.target.value === "Online") {
+      setUsers(backup.filter((user) => user.dob.age % 2 === 0));
+    } else if (e.target.value === "Offline") {
+      setUsers(backup.filter((user) => user.dob.age % 2 !== 0));
+    }
     setFilter(e.target.value);
   };
 
@@ -78,6 +89,7 @@ function App() {
       const response = await fetch("https://randomuser.me/api/?results=100");
       const json = await response.json();
       setUsers(json.results);
+      setBackupUsers(json.results);
     }
     fetchUsers();
   }, []);
@@ -93,7 +105,7 @@ function App() {
           <Dropdown
             title="Sort"
             buttonName={[
-              "None",
+              "All",
               "A to Z (First Name)",
               "A to Z (Last Name)",
               "Z to A (First Name)",
@@ -103,7 +115,7 @@ function App() {
           ></Dropdown>
           <Dropdown
             title="Filter"
-            buttonName={["Online", "Offline"]}
+            buttonName={["All", "Online", "Offline"]}
             handleChange={handleFilterChange}
           ></Dropdown>
         </div>
