@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./App.css";
 import SearchBar from "./components/SearchBar";
 import Profile from "./components/Profile";
@@ -23,10 +24,9 @@ function App() {
     })
     .map((user) => (
       <Profile
-        key={`${user.name.first} ${user.name.last}`}
+        key={`${user.login.uuid}`}
+        username={`${user.name.first} ${user.name.last}`}
         profileImage={user.picture.large}
-        userHandle={user.name.first}
-        lastName={user.name.last}
         age={user.dob.age}
       ></Profile>
     ));

@@ -4,9 +4,7 @@ export default function Profile(props) {
     <li id="profile-card" className="card m-3">
       <div className="card-body">
         <img src={props.profileImage} className="card-img-top mb-3" alt="" />
-        <h5 className="card-title">
-          {props.userHandle} {props.lastName}
-        </h5>
+        <h5 className="card-title">{props.username}</h5>
         <p className="card-text">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda
           veniam reprehenderit fuga pariatur quaerat enim modi corrupti

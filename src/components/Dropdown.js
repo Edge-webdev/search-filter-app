@@ -1,6 +1,5 @@
 export default function Dropdown(props) {
-  const items = props.buttonName;
-  const dropdownItems = items.map((item) => (
+  const dropdownItems = props.buttonName.map((item) => (
     <li key={item}>
       <button
         className="dropdown-item"
