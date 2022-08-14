@@ -120,7 +120,10 @@ function App() {
           ></Dropdown>
         </div>
       </header>
-      <ul className="d-flex flex-row justify-content-start flex-wrap p-0">
+      <ul
+        id="profile-list"
+        className="d-flex flex-row justify-content-start flex-wrap p-0"
+      >
         {userList}
       </ul>
     </div>
