@@ -57,30 +57,26 @@ function App() {
   };
 
   const handleSortChange = (e) => {
-    if (e.target.value === "A to Z (First Name)") {
+    if (e.target.value === "A to Z (First Name)")
       setUsers(users.sort((a, b) => a.name.first.localeCompare(b.name.first)));
-    } else if (e.target.value === "A to Z (Last Name)") {
+    else if (e.target.value === "A to Z (Last Name)")
       setUsers(users.sort((a, b) => a.name.last.localeCompare(b.name.last)));
-    } else if (e.target.value === "Z to A (First Name)") {
+    else if (e.target.value === "Z to A (First Name)")
       setUsers(users.sort((a, b) => b.name.first.localeCompare(a.name.first)));
-    } else if (e.target.value === "Z to A (Last Name)") {
+    else if (e.target.value === "Z to A (Last Name)")
       setUsers(users.sort((a, b) => b.name.last.localeCompare(a.name.last)));
-    } else {
-      setUsers(shuffle(users));
-    }
+    else setUsers(shuffle(users));
     setSort(e.target.value);
   };
 
   const handleFilterChange = (e) => {
     const backup = [...backupUsers];
     setUsers(backup);
-    if (e.target.value === "All") {
-      setUsers(backupUsers);
-    } else if (e.target.value === "Online") {
+    if (e.target.value === "All") setUsers(backupUsers);
+    else if (e.target.value === "Online")
       setUsers(backup.filter((user) => user.dob.age % 2 === 0));
-    } else if (e.target.value === "Offline") {
+    else if (e.target.value === "Offline")
       setUsers(backup.filter((user) => user.dob.age % 2 !== 0));
-    }
     setFilter(e.target.value);
   };
 
